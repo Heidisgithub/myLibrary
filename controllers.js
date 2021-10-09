@@ -26,9 +26,15 @@ if (process.env.DATABASE_URL) {
     db = pgp(uri)
 }
 
-async function addBook(book){
-    const result = await db.query('INSERT INTO books(${this:name}) VALUES(${this:csv})', book)
-    return book;
+async function addBook(book) {
+    const newBook = {
+        title:  book.title,
+        description: book.description,
+        author_id: book.authorId 
+    }
+
+    const result = await db.query('INSERT INTO books(${this:name}) VALUES(${this:csv})', newBook)
+    return newBook;
 }
 
 module.exports = {
