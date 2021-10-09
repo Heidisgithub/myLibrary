@@ -9,9 +9,6 @@ const uri = process.env.DATABASE_URL
 
 
 console.log(uri)
-const db = pgp(uri)
-
-const pgp = require('pg-promise')()
 let db
 
 if (process.env.DATABASE_URL) {
